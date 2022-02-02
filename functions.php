@@ -87,3 +87,21 @@ function understrap_child_customize_controls_js() {
 	);
 }
 add_action( 'customize_controls_enqueue_scripts', 'understrap_child_customize_controls_js' );
+
+
+/**
+ * Eliminar logo wordpress de la barra de admin
+ */
+function eliminar_logo_wp() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('wp-logo');
+}
+add_action('wp_before_admin_bar_render', 'eliminar_logo_wp');
+
+/**
+ * Personalizar frase Gracias por crear con WordPress
+ */
+function modify_footer_admin () {
+	echo 'Página realizada por <a href="http://www.minnim.design">Minnim Design Barcelona</a>';
+  }
+  add_filter('admin_footer_text', 'modify_footer_admin');
